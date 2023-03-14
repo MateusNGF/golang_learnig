@@ -13,6 +13,8 @@ var (
 )
 
 func Mutex() {
+	runtime.GOMAXPROCS(1)
+
 	wgMutex.Add(2)
 
 	go increment("A")
@@ -26,11 +28,10 @@ func Mutex() {
 func increment(id string) {
 	defer wgMutex.Done()
 
-	for count := 0; count < 2; count++ {
+	for count := 0; count < 4; count++ {
 		mutexMutex.Lock()
 		value := couterMutex
 
-		runtime.Gosched()
 		value++
 
 		fmt.Println("ID : ", id, "=> ", value)

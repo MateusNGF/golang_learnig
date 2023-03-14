@@ -11,7 +11,7 @@ var (
 	wgChannels sync.WaitGroup
 )
 
-func Channels() {
+func ChannelsOne() {
 	runtime.GOMAXPROCS(1)
 	// runtime.GOMAXPROCS(2) // Note a diferença da saida.
 
