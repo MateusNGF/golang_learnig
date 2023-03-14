@@ -4,7 +4,8 @@ import "mutex/internal"
 
 func main() {
 	// internal.Mutex()
-	internal.ChannelsOne()
+	// internal.ChannelsOne()
 	// internal.ChannelUnbuffered()
 	// internal.ChannelBuffered()
+	internal.ChannelBufferedVSChannelUnbuffered()
 }

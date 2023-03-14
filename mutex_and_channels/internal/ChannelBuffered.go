@@ -19,8 +19,8 @@ import (
 */
 
 const (
-	numberGorutinesChannelBuffered = 4
-	taskLoadChannelBuffered        = 5
+	numberGorutinesChannelBuffered = 10
+	taskLoadChannelBuffered        = 1e4
 )
 
 var wgChannelBuffered sync.WaitGroup
@@ -45,7 +45,7 @@ func ChannelBuffered() {
 
 	// popula o canal com algumas tarefas a serem feitas
 	for i := 0; i < taskLoadChannelBuffered; i++ {
-		task <- fmt.Sprintf("Task-%d", i)
+		task <- fmt.Sprintf("T-%d", i)
 	}
 
 	close(task)
