@@ -12,6 +12,10 @@ import (
 	Este exemplo de programa mostra como usar um canal com buffer
   para trabalhar com varias tarefas usando um numero predefinido de gorutines.
 
+  Um Channel Buffered é um canal com capacidade para armazenar um ou mais valores antes que eles
+  sejam recebidos. Um canal sem buffer garante que a troca entre duas goroutines seja efetuadas no
+  momento em que o envio e a recepção ocorrem. UM CANAL COM BUFFER NÃO OFERECE ESSA GARANTIA.
+
 */
 
 const (
