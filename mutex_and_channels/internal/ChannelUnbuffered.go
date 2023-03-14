@@ -11,7 +11,10 @@ var (
 	wgChannelsTwo sync.WaitGroup
 )
 
-func ChannelsTwo() {
+/*
+Channel unbuffered.
+*/
+func ChannelUnbuffered() {
 	baston := make(chan int)
 	wgChannelsTwo.Add(1)
 

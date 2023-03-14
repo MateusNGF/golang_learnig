@@ -25,10 +25,8 @@ func ChannelsOne() {
 		fmt.Println(*n)
 	}
 
-	go func() {
-		wgChannels.Wait()
-		close(channel)
-	}()
+	wgChannels.Wait()
+	close(channel)
 
 }
 
