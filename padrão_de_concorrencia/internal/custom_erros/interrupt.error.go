@@ -1,11 +1,7 @@
 package customerros
 
-import "errors"
+type InterruptError struct{}
 
-type InterruptError interface {
-	error
-}
-
-func NewInterruptError() error {
-	return errors.New("Interrupteded.")
+func (e *InterruptError) Error() string {
+	return "InterruptError"
 }

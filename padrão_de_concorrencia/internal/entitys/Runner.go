@@ -47,7 +47,7 @@ func (runner *Runner) Start() error {
 	case err := <-runner.complete:
 		return err
 	case <-runner.timeout:
-		return customerros.NewTimeoutError()
+		return &customerros.TimeoutError{}
 	}
 }
 
@@ -55,7 +55,7 @@ func (runner *Runner) run() error {
 	// verifica se houve interrupção do sistema e percorre todas as tarefas executando-as.
 	for id, task := range runner.tasks {
 		if runner.isInterrupted() {
-			return customerros.NewInterruptError()
+			return &customerros.InterruptError{}
 		}
 
 		task(id)

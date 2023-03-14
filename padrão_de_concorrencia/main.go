@@ -1,6 +1,7 @@
 package main
 
 import (
+	customerros "golang/internal/custom_erros"
 	"golang/internal/entitys"
 	"log"
 	"os"
@@ -14,7 +15,7 @@ func main() {
 func RunRunner() {
 
 	// definimos o tempo de execução maximo do programa.
-	timeout := time.Duration(7 * time.Second)
+	timeout := time.Duration(3 * time.Second)
 
 	log.Println("==> Starting work")
 
@@ -33,8 +34,14 @@ func RunRunner() {
 
 	// inicio a execução do programa e fico observando erros.
 	if err := runner.Start(); err != nil {
-		log.Printf("Terminating due to " + err.Error())
-		os.Exit(1)
+		switch err.(type) {
+		case *customerros.InterruptError:
+			log.Fatalln("Process has interrupted.")
+			os.Exit(1)
+		case *customerros.TimeoutError:
+			log.Fatalln("Process timeout of execution.")
+			os.Exit(2)
+		}
 	}
 
 	log.Println("Process end. <3")

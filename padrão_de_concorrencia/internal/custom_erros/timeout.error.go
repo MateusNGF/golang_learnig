@@ -1,11 +1,9 @@
 package customerros
 
-import "errors"
-
-type TimeoutError interface {
-	error
+type TimeoutError struct {
+	message string
 }
 
-func NewTimeoutError() error {
-	return errors.New("Timeout")
+func (e *TimeoutError) Error() string {
+	return e.message
 }
